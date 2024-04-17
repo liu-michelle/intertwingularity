@@ -6,12 +6,33 @@
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    font-size: 20;
     background-color: rgb(207, 218, 224);
   }
+
+  .white-rect {
+    width: 280px;
+    height: 70px;
+    background-color: white;
+    border: 0.5px solid black;
+    z-index: -1;
+    color: black;
+    font-style: italic;
+  }
+
+  .white-rect:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+    box-shadow: black 5px 10px 5px;
+  }
+  
 </style>
 
 <main>
-  <div>digital heartbeats</div>
-  <div>wires, tangled together</div>
-  <a href="link">blue light surrounds us</a>
+  <div class="white-rect">
+    <a href="https://riyakhetarpal.github.io/interwingularity/">digital heartbeats</a>
+    <div>wires, tangled together</div>
+    <a href="https://dokyongryoo.github.io/Intertwingularity/">blue light surrounds us</a>
+  </div>
+
 </main>

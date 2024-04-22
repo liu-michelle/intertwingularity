@@ -50,5 +50,48 @@
     <div>wires, tangled together</div>
     <a href="https://dokyongryoo.github.io/Intertwingularity/">blue light surrounds us</a>
   </div>
+    <script>
+      // code is from emoji trail example
+      function createEmoji(x, y) {
+        const emojis = ['💻', '📱', '🛜', '💿']
+        const ran = Math.floor(Math.random() * emojis.length)
+        const emoji = emojis[ran]
+        // create span element for emoji
+        const ele = document.createElement('span')
+        ele.textContent = emoji
+        ele.className = 'emoji-trail'
+        // size && position emoji
+        ele.style.position = 'absolute'
+        ele.style.left = x + 'px'
+        ele.style.top = y + window.scrollY + 'px'
+        ele.style.fontSize = '30px'
+        ele.style.color = "rgb(202, 110, 204)"
+        // set emoji data
+        ele.dataset.velocity = {
+          x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 2),
+          y: 1
+        }
+        return ele
+      }
 
+      function updateEmoji(emoji) {
+        let x = parseInt(emoji.style.left)
+        let y = parseInt(emoji.style.top)
+        let f = parseInt(emoji.style.fontSize)
+        x += parseInt(emoji.dataset.velocity.x)
+        y += parseInt(emoji.dataset.velocity.y)
+        f -= 0.25
+        emoji.style.left = x + 'px'
+        emoji.style.top = y + 'px'
+        emoji.style.fontSize = f + 'px'
+        if (f < 0) emoji.remove()
+        else setTimeout(updateEmoji, 1000 / 30, emoji)
+      }
+
+      window.addEventListener('mousemove', (e) => {
+        const emoji = createEmoji(e.clientX + 2, e.clientY + 2)
+        document.body.appendChild(emoji)
+        updateEmoji(emoji)
+      })
+  </script>
 </main>
